@@ -38,7 +38,7 @@ class AppRepository(private val context : Context) {
     fun getDemoIntentBuilder() : RdtIntentBuilder<*> {
         return RdtIntentBuilder.forProvisioning().setSessionId(UUID.randomUUID().toString()) //.requestTestProfile("debug_mal_pf_pv")s
                 //.requestTestProfile("sd_bioline_mal_pf_pv")
-                .requestProfileCriteria(prefs().getString(PREFERENCE_KEY_DIAGNOSTIC,"mal_pf")!!, ProvisionMode.CRITERIA_SET_AND) //.requestProfileCriteria("sd_bioline_mal_pf_pv carestart_mal_pf_pv", ProvisionMode.CRITERIA_SET_OR)
+                .requestProfileCriteria(prefs().getString(PREFERENCE_KEY_DIAGNOSTIC,"mal_pf syph")!!, ProvisionMode.CRITERIA_SET_OR) //.requestProfileCriteria("sd_bioline_mal_pf_pv carestart_mal_pf_pv", ProvisionMode.CRITERIA_SET_OR)
                 //.requestProfileCriteria("fake", ProvisionMode.CRITERIA_SET_OR)
                 .setFlavorOne("Tedros Adhanom")
                 .setFlavorTwo("#4SFS") //.setClassifierBehavior(ClassifierMode.CHECK_YOUR_WORK)

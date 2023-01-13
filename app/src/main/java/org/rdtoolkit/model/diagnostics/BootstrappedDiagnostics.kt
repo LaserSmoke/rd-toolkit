@@ -26,6 +26,10 @@ val RESULT_INDETERMINATE = "indeterminate_result"
 val UNIVERSAL_CONTROL_FAILURE = "universal_control_failure"
 val CONTROL_VALID = "control_outcome_valid"
 
+val DIAG_HEPB="syph"
+val DIAG_HEPB_POS="syph_pos"
+val DIAG_HEPB_NEG="syph_neg"
+
 fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> {
     var pf_pos = cdo(DIAG_PF_POS, "Pf Positive")
     var pf_neg = cdo(DIAG_PF_NEG, "Pf Negative")
@@ -48,6 +52,10 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
 
     var cov_19_result = crp(DIAG_C19, "SARS-CoV-2", listOf(s_cov_2_pos, s_cov_2_neg, control_failure))
 
+
+    var hepB_pos=cdo(DIAG_HEPB_POS,"Hepatitis B Positive")
+    var hepB_neg=cdo(DIAG_HEPB_NEG,"Hepatitis B  Negative")
+    var hepB_result=crp(DIAG_HEPB,"Hepatitis B",listOf(hepB_pos,hepB_neg,control_failure))
 
     var bioline = ConcreteProfile("sd_bioline_mal_pf_pv", "SD Bioline Malaria Ag Pf/Pv", "sample_bioline",60*15,60*30, listOf(pv_result, pf_result), listOf("real"))
     var standard_q_pf = ConcreteProfile("sd_standard_q_mal_pf_ag", "SD Standard™ Q Malaria P.f Ag", "sample_standard_q_pf",60*15,60*30, listOf(pf_result), listOf("real"))
@@ -75,6 +83,7 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
     var quicktest = ConcreteProfile("debug_mal_pf_pv", "FastResolve Malaria P.f./P.v", null,120,240, listOf(pv_result, pf_result), listOf("fake"))
     var lightnighttest = ConcreteProfile("debug_sf_mal_pf_pv", "LightningQuick Malaria P.f./P.v", null,5,25, listOf(pv_result, pf_result), listOf("fake"))
 
+    var sd_bioline_hepB=ConcreteProfile("sd_bioline_hepB","SD Bioline Hepatitis B Ag","sample_sd_bioline_syph",60*15,60*30,listOf(hepB_result),listOf("real"))
     var returnSet = LinkedHashMap<String, RdtDiagnosticProfile>()
 
     returnSet.put(bioline.id(), bioline)
@@ -98,6 +107,8 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
 
     returnSet.put(generic_c19_fifteen.id(), generic_c19_fifteen)
     returnSet.put(generic_c19_twenty.id(), generic_c19_twenty)
+
+    returnSet.put(sd_bioline_hepB.id(),sd_bioline_hepB)
 
     return returnSet
 }
