@@ -30,6 +30,20 @@ val DIAG_HEPB="syph"
 val DIAG_HEPB_POS="syph_pos"
 val DIAG_HEPB_NEG="syph_neg"
 
+
+val DIAG_SYPH="syph1"
+val DIAG_SYPH_POS="syph1_pos"
+val DIAG_SYPH_NEG="syph1_neg"
+
+val DIAG_HIV="hiv"
+val DIAG_HIV1="hiv1"
+val DIAG_HIV1_POS="hiv1_pos"
+val DIAG_HIV1_NEG="hiv1_neg"
+val DIAG_HIV2="hiv2"
+val DIAG_HIV2_POS="hiv2_pos"
+val DIAG_HIV2_NEG="hiv2_neg"
+
+
 fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> {
     var pf_pos = cdo(DIAG_PF_POS, "Pf Positive")
     var pf_neg = cdo(DIAG_PF_NEG, "Pf Negative")
@@ -55,7 +69,20 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
 
     var hepB_pos=cdo(DIAG_HEPB_POS,"Hepatitis B Positive")
     var hepB_neg=cdo(DIAG_HEPB_NEG,"Hepatitis B  Negative")
-    var hepB_result=crp(DIAG_HEPB,"Hepatitis B",listOf(hepB_pos,hepB_neg,control_failure))
+    var hepB_result=crp(DIAG_HEPB,"Hepatitis B",listOf(hepB_pos,hepB_neg,result_indeterminate,control_failure))
+
+    var syph_pos=cdo(DIAG_SYPH_POS,"Syphilis Positive")
+    var syph_neg=cdo(DIAG_SYPH_NEG,"Syphilis Negative")
+    var syph_result=crp(DIAG_SYPH,"Syphilis",listOf(syph_pos,syph_neg,result_indeterminate,control_failure))
+
+    var hiv1_pos=cdo(DIAG_HIV1_POS,"HIV-1 Positive")
+    var hiv1_neg=cdo(DIAG_HIV1_NEG,"HIV-1 Negative")
+    var hiv1_result=crp(DIAG_HIV1,"HIV-1", listOf(hiv1_pos,hiv1_neg,result_indeterminate,control_failure))
+
+    var hiv2_pos=cdo(DIAG_HIV2_POS,"HIV-2 Positive")
+    var hiv2_neg=cdo(DIAG_HIV2_NEG,"HIV-2 Negative")
+    var hiv2_result=crp(DIAG_HIV2,"HIV-2", listOf(hiv2_pos,hiv2_neg,result_indeterminate,control_failure))
+
 
     var bioline = ConcreteProfile("sd_bioline_mal_pf_pv", "SD Bioline Malaria Ag Pf/Pv", "sample_bioline",60*15,60*30, listOf(pv_result, pf_result), listOf("real"))
     var standard_q_pf = ConcreteProfile("sd_standard_q_mal_pf_ag", "SD Standard™ Q Malaria P.f Ag", "sample_standard_q_pf",60*15,60*30, listOf(pf_result), listOf("real"))
@@ -83,7 +110,14 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
     var quicktest = ConcreteProfile("debug_mal_pf_pv", "FastResolve Malaria P.f./P.v", null,120,240, listOf(pv_result, pf_result), listOf("fake"))
     var lightnighttest = ConcreteProfile("debug_sf_mal_pf_pv", "LightningQuick Malaria P.f./P.v", null,5,25, listOf(pv_result, pf_result), listOf("fake"))
 
+
     var sd_bioline_hepB=ConcreteProfile("sd_bioline_hepB","SD Bioline Hepatitis B Ag","sample_sd_bioline_syph",60*15,60*30,listOf(hepB_result),listOf("real"))
+
+    var reckon_hepB=ConcreteProfile("reckon_hepB","Reckon Hepatitis B Ag","sample_reckon_hepb",60*15,60*30,listOf(hepB_result),listOf("real"))
+    var reckon_syph=ConcreteProfile("reckon_syph","Reckon Syphilis","sample_reckon_syph",60*15,60*30,listOf(syph_result),listOf("real"))
+    var reckon_hiv=ConcreteProfile("reckon_hiv","Reckon HIV","sample_reckon_hiv12",60*15,60*30,listOf(hiv1_result,hiv2_result),listOf("real"))
+
+
     var returnSet = LinkedHashMap<String, RdtDiagnosticProfile>()
 
     returnSet.put(bioline.id(), bioline)
@@ -108,7 +142,10 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
     returnSet.put(generic_c19_fifteen.id(), generic_c19_fifteen)
     returnSet.put(generic_c19_twenty.id(), generic_c19_twenty)
 
-    returnSet.put(sd_bioline_hepB.id(),sd_bioline_hepB)
+    returnSet.put(reckon_hepB.id(),reckon_hepB)
+    returnSet.put(reckon_syph.id(),reckon_syph)
+    returnSet.put(reckon_hiv.id(),reckon_hiv)
+
 
     return returnSet
 }

@@ -14,6 +14,7 @@ import org.rdtoolkit.support.model.session.*
 import org.rdtoolkit.util.CombinedLiveData
 import java.util.*
 import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 
 const val TAG = "ProvisionViewModel"
 
@@ -121,7 +122,6 @@ class ProvisionViewModel(var sessionRepository: SessionRepository,
             ProvisionMode.CRITERIA_SET_OR, ProvisionMode.CRITERIA_SET_AND -> {
                 val tags = config.provisionModeData.split(" ").toSet()
                 val inOrMode = config.provisionMode == ProvisionMode.CRITERIA_SET_OR
-
                 val matchingProfiles = diagnosticsRepository.getMatchingTestProfiles(tags, inOrMode)
                 testProfileOptions.value = matchingProfiles.toList()
                 testProfile.value = matchingProfiles.first()

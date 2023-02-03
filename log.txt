@@ -1,0 +1,35 @@
+[33mcommit 2f98394c053fe47cef5a24c102a836d53f3cce7c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: LaserSmoke <james.stafford@ghlabs.org>
+Date:   Thu Feb 2 16:25:25 2023 -0800
+
+    have added different reckon hiv,hepB and syph diagnostics with fake images, only hepB showing up on spinner
+
+[33mcommit f455690a641b9cbb696d3f491d817c35116cdd37[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mlist[m[33m)[m
+Author: LaserSmoke <james.stafford@ghlabs.org>
+Date:   Fri Jan 13 09:25:36 2023 -0800
+
+    add generic syphilis cassette, need to replace with actual cassette to be used
+
+[33mcommit e2ef2b1a57ba508e2d71ff2979956c016840b2cd[m[33m ([m[1;33mtag: 0.9.10[m[33m)[m
+Merge: e657a73 f268d16
+Author: Clayton Sims <csims@dimagi.com>
+Date:   Mon Sep 19 19:37:33 2022 -0400
+
+    Merge pull request #59 from dimagi/ctsims/meriscreen_pf_pan
+    
+    New Diagnostic: Meriscreen PF/PAN
+
+[33mcommit f268d16d09d45fa39f50bb8dccf5283644df4ce4[m[33m ([m[1;31morigin/ctsims/meriscreen_pf_pan[m[33m)[m
+Author: Clayton Sims <csims@dimagi.com>
+Date:   Mon Sep 19 18:34:20 2022 -0500
+
+    meriscreen pfpan
+
+[33mcommit e657a73dd607554dd4563d17ff649cacb9dc7aec[m
+Merge: 5366148 59f6f17
+Author: Clayton Sims <csims@dimagi.com>
+Date:   Mon Sep 19 19:23:40 2022 -0400
+
+    Merge pull request #58 from dimagi/ctsims/gradle_update
+    
+    Update Kotlin build version
