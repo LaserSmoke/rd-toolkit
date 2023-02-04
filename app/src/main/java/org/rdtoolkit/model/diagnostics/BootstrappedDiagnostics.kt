@@ -26,14 +26,14 @@ val RESULT_INDETERMINATE = "indeterminate_result"
 val UNIVERSAL_CONTROL_FAILURE = "universal_control_failure"
 val CONTROL_VALID = "control_outcome_valid"
 
-val DIAG_HEPB="syph"
-val DIAG_HEPB_POS="syph_pos"
-val DIAG_HEPB_NEG="syph_neg"
+val DIAG_HEPB="hepB"
+val DIAG_HEPB_POS="hepB_pos"
+val DIAG_HEPB_NEG="hepB_neg"
 
 
-val DIAG_SYPH="syph1"
-val DIAG_SYPH_POS="syph1_pos"
-val DIAG_SYPH_NEG="syph1_neg"
+val DIAG_SYPH="syph"
+val DIAG_SYPH_POS="syph_pos"
+val DIAG_SYPH_NEG="syph_neg"
 
 val DIAG_HIV="hiv"
 val DIAG_HIV1="hiv1"
