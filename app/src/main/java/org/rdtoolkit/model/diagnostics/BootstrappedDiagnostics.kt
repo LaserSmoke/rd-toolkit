@@ -26,9 +26,9 @@ val RESULT_INDETERMINATE = "indeterminate_result"
 val UNIVERSAL_CONTROL_FAILURE = "universal_control_failure"
 val CONTROL_VALID = "control_outcome_valid"
 
-val DIAG_HEPB="hepB"
-val DIAG_HEPB_POS="hepB_pos"
-val DIAG_HEPB_NEG="hepB_neg"
+val DIAG_HEPB="hepb"
+val DIAG_HEPB_POS="hepb_pos"
+val DIAG_HEPB_NEG="hepb_neg"
 
 
 val DIAG_SYPH="syph"
@@ -67,9 +67,9 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
     var cov_19_result = crp(DIAG_C19, "SARS-CoV-2", listOf(s_cov_2_pos, s_cov_2_neg, control_failure))
 
 
-    var hepB_pos=cdo(DIAG_HEPB_POS,"Hepatitis B Positive")
-    var hepB_neg=cdo(DIAG_HEPB_NEG,"Hepatitis B  Negative")
-    var hepB_result=crp(DIAG_HEPB,"Hepatitis B",listOf(hepB_pos,hepB_neg,result_indeterminate,control_failure))
+    var hepb_pos=cdo(DIAG_HEPB_POS,"Hepatitis B Positive")
+    var hepb_neg=cdo(DIAG_HEPB_NEG,"Hepatitis B  Negative")
+    var hepb_result=crp(DIAG_HEPB,"Hepatitis B",listOf(hepb_pos,hepb_neg,result_indeterminate,control_failure))
 
     var syph_pos=cdo(DIAG_SYPH_POS,"Syphilis Positive")
     var syph_neg=cdo(DIAG_SYPH_NEG,"Syphilis Negative")
@@ -111,16 +111,20 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
     var lightnighttest = ConcreteProfile("debug_sf_mal_pf_pv", "LightningQuick Malaria P.f./P.v", null,5,25, listOf(pv_result, pf_result), listOf("fake"))
 
 
-    var sd_bioline_hepB=ConcreteProfile("sd_bioline_hepB","SD Bioline Hepatitis B Ag","sample_sd_bioline_syph",60*15,60*30,listOf(hepB_result),listOf("real"))
-
-    var reckon_hepB=ConcreteProfile("reckon_hepB","Reckon Hepatitis B Ag","sample_reckon_hepb",60*15,60*30,listOf(hepB_result),listOf("real"))
+    var sd_bioline_hepb=ConcreteProfile("sd_bioline_hepB","SD Bioline Hepatitis B Ag","sample_sd_bioline_syph",60*15,60*30,listOf(hepb_result),listOf("real"))
+    //GHL diagnostic Tests
+    var reckon_hepb=ConcreteProfile("reckon_hepb","Reckon Hepatitis B Ag","sample_reckon_hepb",60*15,60*30,listOf(hepb_result),listOf("real"))
     var reckon_syph=ConcreteProfile("reckon_syph","Reckon Syphilis","sample_reckon_syph",60*15,60*30,listOf(syph_result),listOf("real"))
     var reckon_hiv=ConcreteProfile("reckon_hiv","Reckon HIV","sample_reckon_hiv12",60*15,60*30,listOf(hiv1_result,hiv2_result),listOf("real"))
-
+    var reckon_pf_pv=ConcreteProfile("reckon_pf_pv","Reckon 1stCheck Pf/Pv Ag","sample_reckon_pf_pv",60*15,60*30,listOf(pv_result,pf_result),listOf("real"))
+    var bhat_hepb=ConcreteProfile("bhat_hepb","Bhat HEPA-SCAN HBsAg","sample_bhat_hepb",60*15,60*30,listOf(hepb_result),listOf("real"))
+    var qualpro_syph=ConcreteProfile("qualpro_syph","QualRro Syphicheck-WB","sample_qualpro_syph",60*15,60*30,listOf(syph_result),listOf("real"))
+    var abbott_hiv=ConcreteProfile("abbott_hiv","Abbott Bioline HIV 1/2" ,"sample_abbott_hiv12",60*15,60*30,listOf(hiv1_result,hiv2_result),listOf("real"))
+    var bhat_pf_pv=ConcreteProfile("bhat_pf_pv","Bhat Maleriscan Pf/Pv","sample_bhat_pf_pv",60*15,60*30,listOf(pf_result,pv_result),listOf("real"))
 
     var returnSet = LinkedHashMap<String, RdtDiagnosticProfile>()
 
-    returnSet.put(bioline.id(), bioline)
+    /*returnSet.put(bioline.id(), bioline)
     returnSet.put(standard_q_pf.id, standard_q_pf)
     returnSet.put(sd_bioline_pf.id, sd_bioline_pf)
     returnSet.put(carestart.id(), carestart)
@@ -141,11 +145,15 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
 
     returnSet.put(generic_c19_fifteen.id(), generic_c19_fifteen)
     returnSet.put(generic_c19_twenty.id(), generic_c19_twenty)
-
-    returnSet.put(reckon_hepB.id(),reckon_hepB)
+*/
+    returnSet.put(reckon_hepb.id(),reckon_hepb)
     returnSet.put(reckon_syph.id(),reckon_syph)
     returnSet.put(reckon_hiv.id(),reckon_hiv)
-
+    returnSet.put(reckon_pf_pv.id(),reckon_pf_pv)
+    returnSet.put(bhat_hepb.id(),bhat_hepb)
+    returnSet.put(qualpro_syph.id,qualpro_syph)
+    returnSet.put(abbott_hiv.id,abbott_hiv)
+    returnSet.put(bhat_pf_pv.id(),bhat_pf_pv)
 
     return returnSet
 }
