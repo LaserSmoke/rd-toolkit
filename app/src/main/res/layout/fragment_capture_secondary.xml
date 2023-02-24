@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context=".ui.capture.CaptureTimerFragment">
 
     <LinearLayout
@@ -12,34 +11,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <TextView
+            style="@style/TextInstructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="16dp"
-            style="@style/TextInstructions"
-            android:text="@string/capture_secondary_prompt_msg"
-            />
+            android:text="@string/capture_secondary_prompt_msg" />
 
         <Button
             android:id="@+id/capture_secondary_acknowledge"
             style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="5dp"
             android:drawableLeft="@drawable/ic_baseline_check_white_24"
+            android:drawablePadding="5dp"
             android:onClick="acknowledgeSecondaryRequest"
             android:text="@string/capture_secondary_btn_understand" />
 
         <Button
             android:id="@+id/capture_secondary_view_instructions"
             style="@style/Button"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="viewSecondaryInstructions"
-            android:text="@string/capture_secondary_btn_view_instructions" />
+            android:text="@string/capture_secondary_btn_view_instructions"
+            android:visibility="gone" />
 
 
     </LinearLayout>
@@ -50,23 +48,22 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            android:elevation="2dp">
+            android:elevation="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/single_pad"
-                android:textAlignment="center"
-                android:text="@string/capture_secondary_prompt_directions" />
+                android:text="@string/capture_secondary_prompt_directions"
+                android:textAlignment="center" />
 
 
             <Button
@@ -77,23 +74,25 @@
                 android:drawableLeft="@drawable/ic_baseline_camera_white_24"
                 android:drawablePadding="5dp"
                 android:onClick="captureSecondaryImage"
+                android:rotation="0"
                 android:text="@string/capture_secondary_btn_capture" />
 
         </LinearLayout>
     </FrameLayout>
+
     <LinearLayout
         android:id="@+id/capture_secondary_results_frame"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:gravity="center_horizontal"
-        android:layout_margin="16dp">
+        android:orientation="vertical">
 
         <FrameLayout
-            android:layout_gravity="center"
-            android:paddingBottom="8dp"
             android:layout_width="@dimen/timer_countdown_size"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="8dp">
 
             <ImageView
                 android:id="@+id/capture_secondary_test_image"
