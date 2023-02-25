@@ -2,6 +2,7 @@ package org.rdtoolkit.model.session
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.preference.PreferenceManager
 import org.rdtoolkit.support.interop.RdtIntentBuilder
 import org.rdtoolkit.support.model.session.ProvisionMode
@@ -36,6 +37,7 @@ class AppRepository(private val context : Context) {
     }
 
     fun getDemoIntentBuilder() : RdtIntentBuilder<*> {
+        Log.d("DIAGNOSTIC", prefs().getString(PREFERENCE_KEY_DIAGNOSTIC,"hiv1 syph hepb mal_pf")!!)
         return RdtIntentBuilder.forProvisioning().setSessionId(UUID.randomUUID().toString()) //.requestTestProfile("debug_mal_pf_pv")s
                 //.requestTestProfile("sd_bioline_mal_pf_pv")
                 .requestProfileCriteria(prefs().getString(PREFERENCE_KEY_DIAGNOSTIC,"hiv1 syph hepb mal_pf")!!, ProvisionMode.CRITERIA_SET_OR) //.requestProfileCriteria("sd_bioline_mal_pf_pv carestart_mal_pf_pv", ProvisionMode.CRITERIA_SET_OR)
@@ -48,7 +50,8 @@ class AppRepository(private val context : Context) {
     }
 
     private fun prefs(): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(context)!!
+        val preferences=PreferenceManager.getDefaultSharedPreferences((context))
+        return preferences!!
     }
 
     companion object {

@@ -113,14 +113,14 @@ fun generateBootstrappedDiagnostics(): MutableMap<String, RdtDiagnosticProfile> 
 
     var sd_bioline_hepb=ConcreteProfile("sd_bioline_hepB","SD Bioline Hepatitis B Ag","sample_sd_bioline_syph",60*15,60*30,listOf(hepb_result),listOf("real"))
     //GHL diagnostic Tests
-    var reckon_hepb=ConcreteProfile("reckon_hepb","Reckon Hepatitis B Ag","sample_reckon_hepb",60*15,60*30,listOf(hepb_result),listOf("real"))
-    var reckon_syph=ConcreteProfile("reckon_syph","Reckon Syphilis","sample_reckon_syph",60*15,60*30,listOf(syph_result),listOf("real"))
-    var reckon_hiv=ConcreteProfile("reckon_hiv","Reckon HIV","sample_reckon_hiv12",60*15,60*30,listOf(hiv1_result,hiv2_result),listOf("real"))
-    var reckon_pf_pv=ConcreteProfile("reckon_pf_pv","Reckon 1stCheck Pf/Pv Ag","sample_reckon_pf_pv",60*15,60*30,listOf(pv_result,pf_result),listOf("real"))
-    var bhat_hepb=ConcreteProfile("bhat_hepb","Bhat HEPA-SCAN HBsAg","sample_bhat_hepb",60*15,60*30,listOf(hepb_result),listOf("real"))
+    var reckon_hepb=ConcreteProfile("reckon_hepb","Reckon Hepatitis B Ag","sample_reckon_hepb",60*15,60*20,listOf(hepb_result),listOf("real"))
+    var reckon_syph=ConcreteProfile("reckon_syph","Reckon Syphilis","sample_reckon_syph",60*20,60*30,listOf(syph_result),listOf("real"))
+    var reckon_hiv=ConcreteProfile("reckon_hiv","Reckon HIV","sample_reckon_hiv12",60*15,60*20,listOf(hiv1_result,hiv2_result),listOf("real"))
+    var reckon_pf_pv=ConcreteProfile("reckon_pf_pv","Reckon 1stCheck Pf/Pv Ag","sample_reckon_pf_pv",60*20,60*30,listOf(pv_result,pf_result),listOf("real"))
+    var bhat_hepb=ConcreteProfile("bhat_hepb","Bhat HEPA-SCAN HBsAg","sample_bhat_hepb",60*20,60*30,listOf(hepb_result),listOf("real"))
     var qualpro_syph=ConcreteProfile("qualpro_syph","QualRro Syphicheck-WB","sample_qualpro_syph",60*15,60*30,listOf(syph_result),listOf("real"))
-    var abbott_hiv=ConcreteProfile("abbott_hiv","Abbott Bioline HIV 1/2" ,"sample_abbott_hiv12",60*15,60*30,listOf(hiv1_result,hiv2_result),listOf("real"))
-    var bhat_pf_pv=ConcreteProfile("bhat_pf_pv","Bhat Maleriscan Pf/Pv","sample_bhat_pf_pv",60*15,60*30,listOf(pf_result,pv_result),listOf("real"))
+    var abbott_hiv=ConcreteProfile("abbott_hiv","Abbott Bioline HIV 1/2" ,"sample_abbott_hiv12",60*20,60*30,listOf(hiv1_result,hiv2_result),listOf("real"))
+    var bhat_pf_pv=ConcreteProfile("bhat_pf_pv","Bhat Maleriscan Pf/Pv","sample_bhat_pf_pv",60*20,60*30,listOf(pf_result,pv_result),listOf("real"))
 
     var returnSet = LinkedHashMap<String, RdtDiagnosticProfile>()
 
