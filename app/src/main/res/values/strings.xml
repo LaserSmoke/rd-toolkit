@@ -107,4 +107,8 @@
     <string name="capture_secondary_btn_capture">Capture Extra Image</string>
     <string name="provision_input_question_capture_card">Do you have a Capture Card to use with this RDT?</string>
     <string name="capture_summary_status_extra_image">Extra Image</string>
+    <string name="ghl_home_message_txt">Rapid Diagnostic Toolkit</string>
+    <string name="ghl_test_request_button_text">Start RDT Test</string>
+    <string name="default_patient_id">XYZ1234</string>
+    <string name="default_test_id">#9876A</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -24,11 +25,16 @@ import org.rdtoolkit.support.model.session.TestSession;
 import org.rdtoolkit.ui.home.HomeViewModel;
 import org.rdtoolkit.ui.provision.ProvisionViewModel;
 import org.rdtoolkit.util.InjectorUtils;
+import org.rdtoolkit.util.UtilsKt;
+
+
 
 import java.util.UUID;
 
 import static org.rdtoolkit.support.interop.RdtIntentBuilder.ACTION_TEST_CAPTURE;
 import static org.rdtoolkit.support.interop.RdtIntentBuilder.INTENT_EXTRA_RDT_SESSION_ID;
+
+import okhttp3.internal.Util;
 
 public class MainActivity extends LocaleAwareCompatActivity {
 
@@ -63,6 +69,9 @@ public class MainActivity extends LocaleAwareCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        //String patient_id=(findViewById(R.id.txt_patient_id).toString());
+        //String test_id=(findViewById(R.id.txt_test_id).toString());
     }
 
     @Override
@@ -81,7 +90,8 @@ public class MainActivity extends LocaleAwareCompatActivity {
 
 
     public void simulateTestRequest(View view) {
-        RdtIntentBuilder builder = homeViewModel.getAppRepository().getDemoIntentBuilder();
+
+        RdtIntentBuilder builder = homeViewModel.getAppRepository().getDemoIntentBuilder(UtilsKt.randompatientID(), UtilsKt.randomtestId());
         Intent i = builder.build();
 
         this.startActivityForResult(i, ACTIVITY_PROVISION);

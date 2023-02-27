@@ -36,14 +36,14 @@ class AppRepository(private val context : Context) {
         editor.commit()
     }
 
-    fun getDemoIntentBuilder() : RdtIntentBuilder<*> {
+    fun getDemoIntentBuilder(patient_id:String,test_id:String) : RdtIntentBuilder<*> {
         Log.d("DIAGNOSTIC", prefs().getString(PREFERENCE_KEY_DIAGNOSTIC,"hiv1 syph hepb mal_pf")!!)
         return RdtIntentBuilder.forProvisioning().setSessionId(UUID.randomUUID().toString()) //.requestTestProfile("debug_mal_pf_pv")s
                 //.requestTestProfile("sd_bioline_mal_pf_pv")
                 .requestProfileCriteria(prefs().getString(PREFERENCE_KEY_DIAGNOSTIC,"hiv1 syph hepb mal_pf")!!, ProvisionMode.CRITERIA_SET_OR) //.requestProfileCriteria("sd_bioline_mal_pf_pv carestart_mal_pf_pv", ProvisionMode.CRITERIA_SET_OR)
                 //.requestProfileCriteria("fake", ProvisionMode.CRITERIA_SET_OR)
-                .setFlavorOne("Tedros Adhanom")
-                .setFlavorTwo("#4SFS") //.setClassifierBehavior(ClassifierMode.CHECK_YOUR_WORK)
+                .setFlavorOne(patient_id)
+                .setFlavorTwo(test_id) //.setClassifierBehavior(ClassifierMode.CHECK_YOUR_WORK)
                 .setInTestQaMode() //.setSecondaryCaptureRequirements("capture_windowed")
                 //.setSubmitAllImagesToCloudworks(true)
                 .setIndeterminateResultsAllowed(true)
