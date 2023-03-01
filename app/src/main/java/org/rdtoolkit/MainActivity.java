@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -44,6 +45,10 @@ public class MainActivity extends LocaleAwareCompatActivity {
 
     private HomeViewModel homeViewModel;
 
+
+    public String  patientid;
+    public String  testid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +75,8 @@ public class MainActivity extends LocaleAwareCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        //String patient_id=(findViewById(R.id.txt_patient_id).toString());
-        //String test_id=(findViewById(R.id.txt_test_id).toString());
+        homeViewModel.getPatientId().observe(this,item->{patientid=item;});
+        homeViewModel.getTestId().observe(this,item->{testid=item;});
     }
 
     @Override
@@ -88,10 +93,12 @@ public class MainActivity extends LocaleAwareCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
     public void simulateTestRequest(View view) {
+        if (patientid==null)patientid="";
+        if (testid==null)testid="";
 
-        RdtIntentBuilder builder = homeViewModel.getAppRepository().getDemoIntentBuilder(UtilsKt.randompatientID(), UtilsKt.randomtestId());
+        //RdtIntentBuilder builder = homeViewModel.getAppRepository().getDemoIntentBuilder(UtilsKt.randompatientID(), UtilsKt.randomtestId());
+        RdtIntentBuilder builder = homeViewModel.getAppRepository().getDemoIntentBuilder(patientid, testid);
         Intent i = builder.build();
 
         this.startActivityForResult(i, ACTIVITY_PROVISION);
