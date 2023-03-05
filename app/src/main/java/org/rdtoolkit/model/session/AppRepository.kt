@@ -38,8 +38,8 @@ class AppRepository(private val context : Context) {
 
     fun getDemoIntentBuilder(patient_id:String,test_id:String) : RdtIntentBuilder<*> {
         Log.d("DIAGNOSTIC", prefs().getString(PREFERENCE_KEY_DIAGNOSTIC,"hiv1 syph hepb mal_pf")!!)
-        return RdtIntentBuilder.forProvisioning().setSessionId(UUID.randomUUID().toString()) //.requestTestProfile("debug_mal_pf_pv")s
-                //.requestTestProfile("sd_bioline_mal_pf_pv")
+        return RdtIntentBuilder.forProvisioning().setSessionId(UUID.randomUUID().toString())
+                //.requestTestProfile("debug_mal_pf_pv")
                 .requestProfileCriteria(prefs().getString(PREFERENCE_KEY_DIAGNOSTIC,"hiv1 syph hepb mal_pf")!!, ProvisionMode.CRITERIA_SET_OR) //.requestProfileCriteria("sd_bioline_mal_pf_pv carestart_mal_pf_pv", ProvisionMode.CRITERIA_SET_OR)
                 //.requestProfileCriteria("fake", ProvisionMode.CRITERIA_SET_OR)
                 .setFlavorOne(patient_id)

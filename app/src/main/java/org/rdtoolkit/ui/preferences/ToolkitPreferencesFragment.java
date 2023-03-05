@@ -79,22 +79,28 @@ public class ToolkitPreferencesFragment extends PreferenceFragmentCompat impleme
 
         Pair<CharSequence[], CharSequence[]> values = getDiagnosticsPreferenceValues();
 
+
         listPreference.setEntries(values.second);
         listPreference.setEntryValues(values.first);
         listPreference.setOnPreferenceChangeListener(this);
     }
 
     private Pair<CharSequence[], CharSequence[]> getDiagnosticsPreferenceValues() {
+        String alltest_ids="";
         List<ResultProfile> availableDiagnosticResults =
                 preferencesViewModel.getDiagnosticsRepo().getAvailableDiagnosticResults();
 
-        CharSequence[] ids = new CharSequence[availableDiagnosticResults.size()];
-        CharSequence[] names = new CharSequence[availableDiagnosticResults.size()];
+        CharSequence[] ids = new CharSequence[availableDiagnosticResults.size()+1];
+        CharSequence[] names = new CharSequence[availableDiagnosticResults.size()+1];
 
         for(int i = 0 ; i < availableDiagnosticResults.size() ; ++i) {
             ids[i] = availableDiagnosticResults.get(i).id();
+            alltest_ids+=ids[i]+" ";
             names[i] = availableDiagnosticResults.get(i).readableName();
         }
+
+        ids[availableDiagnosticResults.size()]=alltest_ids;
+        names[availableDiagnosticResults.size()]="All tests";
         return new Pair(ids, names);
     }
 
